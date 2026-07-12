@@ -14,7 +14,7 @@ Telegram orqali shaxsiy vazifalarni boshqarish uchun bot. Foydalanuvchi vazifa q
 
 1. Repository'ni clone qiling va papkaga kiring:
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/berdiyevs/task-manager-bot.git
    cd task-manager-bot
    ```
 
@@ -110,17 +110,12 @@ Har bir so'rovda `user_id` bo'yicha filtr qo'llaniladi — shu orqali foydalanuv
 
 ## Bajarilmagan yoki yaxshilanishi mumkin bo'lgan qismlar
 
-Topshiriqda "majburiy emas" deb belgilangan quyidagi imkoniyatlar ataylab qo'shilmadi (asosiy funksionallikka e'tiborni jamlash uchun):
-
 - Pagination (vazifalar soni ko'p bo'lganda sahifalash)
-- Nomi/status/muhimlik darajasi bo'yicha qidiruv va filter
 - Muddati o'tgan vazifalarni alohida ro'yxatda ko'rsatish
 - Eslatma/bildirishnoma yuborish (muddat yaqinlashganda)
 - Logging (fayl darajasida)
-- Docker / docker-compose
 - Unit testlar
 - PostgreSQL va migratsiyalar (o'rniga SQLite ishlatildi, texnik talablarda ruxsat berilgan)
-- Serverga deploy qilish
 
 Ushbu qismlar keyingi bosqichda, asosiy funksionallik tasdiqlangandan so'ng qo'shilishi mumkin.
 
