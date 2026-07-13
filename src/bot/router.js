@@ -9,12 +9,14 @@ const taskDetail = require('./handlers/taskDetail');
 const editTask = require('./handlers/editTask');
 const deleteTask = require('./handlers/deleteTask');
 const stats = require('./handlers/stats');
+const search = require('./handlers/search');
 
 // Asosiy menyu tugmalari - bular har doim ustunlik qiladi, hatto foydalanuvchi
 // biror jarayon (masalan, vazifa qo'shish) o'rtasida bo'lsa ham.
 const MENU_ACTIONS = {
   '➕ Yangi vazifa': (bot, chatId, userId) => addTask.startAddTask(bot, chatId),
   '📋 Vazifalar': (bot, chatId, userId) => listTasks.showTaskList(bot, chatId, userId),
+  '🔍 Qidiruv/Filter': (bot, chatId, userId) => search.showSearchMenu(bot, chatId),
   '📊 Statistika': (bot, chatId, userId) => stats.showStats(bot, chatId, userId),
 };
 
@@ -55,6 +57,9 @@ function registerRouter(bot) {
       if (state && state.flow === 'edit_task') {
         return await editTask.handleTextStep(bot, msg, state);
       }
+      if (state && state.flow === 'search_name') {
+        return await search.handleTextStep(bot, msg, state);
+      }
 
       return bot.sendMessage(chatId, 'Iltimos, quyidagi menyudan birini tanlang 👇', mainMenuKeyboard());
     } catch (err) {
@@ -83,6 +88,13 @@ function registerRouter(bot) {
 
       if (data.startsWith('task:view:')) return await taskDetail.handleView(bot, query);
       if (data === 'task:back') return await listTasks.handleBack(bot, query);
+
+      if (data === 'search:name') return await search.handleNameSearchStart(bot, query);
+      if (data.startsWith('search:status:set:')) return await search.handleStatusSet(bot, query);
+      if (data === 'search:status') return await search.handleStatusMenu(bot, query);
+      if (data.startsWith('search:priority:set:')) return await search.handlePrioritySet(bot, query);
+      if (data === 'search:priority') return await search.handlePriorityMenu(bot, query);
+      if (data === 'search:back') return await search.handleBack(bot, query);
 
       // Noma'lum callback - hech bo'lmasa "loading" holatini to'xtatamiz
       await bot.answerCallbackQuery(query.id);

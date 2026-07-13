@@ -59,6 +59,36 @@ async function deleteTask(userId, taskId) {
 }
 
 /**
+ * Vazifa nomi bo'yicha qidiradi (katta-kichik harfga sezgir emas, qisman moslik ham topiladi).
+ */
+async function searchTasksByName(userId, query) {
+  return db.all(
+    'SELECT * FROM tasks WHERE user_id = ? AND title LIKE ? ORDER BY due_date ASC',
+    [userId, `%${query}%`]
+  );
+}
+
+/**
+ * Status bo'yicha filtrlaydi.
+ */
+async function filterTasksByStatus(userId, status) {
+  return db.all(
+    'SELECT * FROM tasks WHERE user_id = ? AND status = ? ORDER BY due_date ASC',
+    [userId, status]
+  );
+}
+
+/**
+ * Muhimlik darajasi bo'yicha filtrlaydi.
+ */
+async function filterTasksByPriority(userId, priority) {
+  return db.all(
+    'SELECT * FROM tasks WHERE user_id = ? AND priority = ? ORDER BY due_date ASC',
+    [userId, priority]
+  );
+}
+
+/**
  * Foydalanuvchi uchun statistika hisoblaydi.
  */
 async function getStats(userId) {
@@ -92,4 +122,7 @@ module.exports = {
   updateTaskField,
   deleteTask,
   getStats,
+  searchTasksByName,
+  filterTasksByStatus,
+  filterTasksByPriority,
 };

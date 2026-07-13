@@ -3,7 +3,7 @@ const { priorityLabel, statusLabel } = require('./utils/format');
 function mainMenuKeyboard() {
   return {
     reply_markup: {
-      keyboard: [['➕ Yangi vazifa'], ['📋 Vazifalar', '📊 Statistika']],
+      keyboard: [['➕ Yangi vazifa'], ['📋 Vazifalar', '🔍 Qidiruv/Filter'], ['📊 Statistika']],
       resize_keyboard: true,
     },
   };
@@ -94,6 +94,41 @@ function deleteConfirmKeyboard(taskId) {
   };
 }
 
+function searchMenuKeyboard() {
+  return {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: '🔤 Nomi bo‘yicha qidirish', callback_data: 'search:name' }],
+        [{ text: '📍 Status bo‘yicha', callback_data: 'search:status' }],
+        [{ text: '🔥 Muhimlik darajasi bo‘yicha', callback_data: 'search:priority' }],
+      ],
+    },
+  };
+}
+
+function searchStatusKeyboard() {
+  const rows = STATUS_VALUES.map((s) => [
+    { text: statusLabel(s), callback_data: `search:status:set:${s}` },
+  ]);
+  rows.push([{ text: '⬅️ Orqaga', callback_data: 'search:back' }]);
+  return { reply_markup: { inline_keyboard: rows } };
+}
+
+function searchPriorityKeyboard() {
+  return {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: 'Past', callback_data: 'search:priority:set:low' },
+          { text: "O'rta", callback_data: 'search:priority:set:medium' },
+          { text: 'Yuqori', callback_data: 'search:priority:set:high' },
+        ],
+        [{ text: '⬅️ Orqaga', callback_data: 'search:back' }],
+      ],
+    },
+  };
+}
+
 module.exports = {
   mainMenuKeyboard,
   priorityKeyboard,
@@ -103,4 +138,7 @@ module.exports = {
   editFieldKeyboard,
   editPriorityKeyboard,
   deleteConfirmKeyboard,
+  searchMenuKeyboard,
+  searchStatusKeyboard,
+  searchPriorityKeyboard,
 };
