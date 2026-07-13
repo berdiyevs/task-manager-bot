@@ -16,8 +16,7 @@ Telegram orqali shaxsiy vazifalarni boshqarish uchun bot. Foydalanuvchi vazifa q
    ```bash
    git clone https://github.com/berdiyevs/task-manager-bot.git
    cd task-manager-bot
-
-```
+   
 
 2. Kerakli paketlarni o‘rnating:
 ```bash
