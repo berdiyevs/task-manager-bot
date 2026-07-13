@@ -14,7 +14,7 @@ Telegram orqali shaxsiy vazifalarni boshqarish uchun bot. Foydalanuvchi vazifa q
 
 1. Repository'ni clone qiling va papkaga kiring:
    ```bash
-   git clone [https://github.com/berdiyevs/task-manager-bot.git](https://github.com/berdiyevs/task-manager-bot.git)
+   git clone https://github.com/berdiyevs/task-manager-bot.git
    cd task-manager-bot
 
 ```
@@ -176,7 +176,3 @@ Ushbu qismlar keyingi bosqichda, asosiy funksionallik tasdiqlangandan so'ng qo's
 ## Foydalanilgan suhbat holati (state) haqida eslatma
 
 Ko'p bosqichli formalar (vazifa qo'shish, tahrirlash) uchun foydalanuvchining "hozir nima kiritilyapti" holati xotirada (`Map` orqali) saqlanadi, chunki bu vaqtinchalik ma'lumot va bot qayta ishga tushganda yo'qolishi muammo emas. Vazifalarning o'zi doim SQLite bazasida saqlanadi.
-
-```
-
-```
