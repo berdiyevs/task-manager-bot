@@ -13,11 +13,12 @@ Telegram orqali shaxsiy vazifalarni boshqarish uchun bot. Foydalanuvchi vazifa q
 ## Ishga tushirish (Local)
 
 1. Repository'ni clone qiling va papkaga kiring:
-   ```bash
-   git clone https://github.com/berdiyevs/task-manager-bot.git
-   cd task-manager-bot
-   
+```bash
+git clone https://github.com/berdiyevs/task-manager-bot.git
+cd task-manager-bot
 
+```
+   
 2. Kerakli paketlarni o‘rnating:
 ```bash
 npm install
